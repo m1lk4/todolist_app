@@ -5,12 +5,14 @@ from flask import request
 from src.models.list_model import List
 from src.database.todolist_db import db
 
-list_blueprint = Blueprint("list", __name__, url_prefix="/list")
+list_blueprint = Blueprint("list", __name__, url_prefix="/lists")
 
 
 @list_blueprint.get("/")
-def show():
-    return render_template("view.html")
+def index():
+    lists = List.query.all()
+    print(lists)
+    return render_template("index.html", lists=lists)
 
 
 @list_blueprint.get("/new")
@@ -20,8 +22,8 @@ def new():
 
 @list_blueprint.post("/")
 def create():
-    name = List(name=request.form.get("name"))
-    db.session.add(name)
+    list = List(name=request.form.get("name"))
+    db.session.add(list)
     db.session.commit()
 
-    return redirect("/list")
+    return redirect("/lists")
