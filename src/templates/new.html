@@ -5,7 +5,7 @@
 {% block body %}
 <body>
     <section class="section">
-        <form method="post" action="{{ url_for('list.list_add') }}" class="box">
+        <form method="post" action="{{ url_for('list.create') }}" class="box">
             <h1 class="title">Nueva lista</h1>
             <div class="field">
                 <label class="label" for="name">Nombre</label>
@@ -15,10 +15,10 @@
                 </div>
             </div>
             <div class="buttons mt-6">
-                <button class="button is-primary" type="submit" href="{{ url_for('list.list_view') }}">
+                <button class="button is-primary" type="submit" href="{{ url_for('list.show') }}">
                     <span>Guardar</span>
                 </button>
-                <a class="button" href="{{ url_for('list.list_view') }}">
+                <a class="button" href="{{ url_for('list.show') }}">
                     <span>Cancelar</span>
                 </a>
             </div>

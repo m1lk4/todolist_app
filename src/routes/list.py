@@ -9,17 +9,17 @@ list_blueprint = Blueprint("list", __name__, url_prefix="/list")
 
 
 @list_blueprint.get("/")
-def list_view():
-    return render_template("list_view.html")
+def show():
+    return render_template("view.html")
 
 
 @list_blueprint.get("/new")
-def list_new():
-    return render_template("list_new.html")
+def new():
+    return render_template("new.html")
 
 
 @list_blueprint.post("/")
-def list_add():
+def create():
     name = List(name=request.form.get("name"))
     db.session.add(name)
     db.session.commit()
