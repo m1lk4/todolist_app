@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+<!DOCTYPE html>
+<html>
+{% block body %}
+<body>
+    <section class="section">
+        <form method="post" action="{{ url_for('list.list_add') }}" class="box">
+            <h1 class="title">Nueva lista</h1>
+            <div class="field">
+                <label class="label" for="name">Nombre</label>
+                <p>Escriba el nombre de la lista</p>
+                <div class="control">
+                    <input class="input" type="text" id="name" name="name" placeholder="Nombre">
+                </div>
+            </div>
+            <div class="buttons mt-6">
+                <button class="button is-primary" type="submit" href="{{ url_for('list.list_view') }}">
+                    <span>Guardar</span>
+                </button>
+                <a class="button" href="{{ url_for('list.list_view') }}">
+                    <span>Cancelar</span>
+                </a>
+            </div>
+        </form>
+    </section>
+</body>
+{% endblock %}
+</html>

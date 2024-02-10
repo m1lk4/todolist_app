@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+<!DOCTYPE html>
+<html>
+<head></head>
+
+{% block body %}
+<body>
+    <section class="section">
+        <div class="container">
+          <h1 class="title">
+            Lista de tareas
+          </h1>
+          <p class="subtitle">
+            Espacio para ver y crear listas de tareas.
+          </p>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <a class="button is-responsive is-primary is-pulled-right" href="{{ url_for('list.list_new') }}">
+                <span class="icon">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+                <span>Nueva lista</span>
+            </a>
+        </div>
+        <div class="container">
+          {{ name }} aqui name
+        </div>
+    </section>
+</body>
+{% endblock %}
+
+</html>
