@@ -11,7 +11,6 @@ list_blueprint = Blueprint("list", __name__, url_prefix="/lists")
 @list_blueprint.get("/")
 def index():
     lists = List.query.all()
-    print(lists)
     return render_template("index.html", lists=lists)
 
 
@@ -29,7 +28,18 @@ def create():
     return redirect("/lists")
 
 
-@list_blueprint.get("/<name>")
-def edit(name):
-    name = name
-    return render_template("edit.html", name=name)
+@list_blueprint.get("/<int:id>")
+def edit(id):
+    list = List.query.get(id)
+    name = list.name
+    return render_template("edit.html", name=name, id=id)
+
+
+@list_blueprint.post("/<int:id>")
+def update(id):
+    new_name = request.form["name"]
+    list = List.query.get(id)
+    list.name = new_name
+    db.session.commit()
+
+    return redirect("/lists")

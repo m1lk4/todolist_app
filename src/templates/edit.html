@@ -3,7 +3,7 @@
 {% block body %}
 <section class="section">
   <h1 class="title">Nueva lista</h1>
-  <form method="post" action="{{ url_for('list.create') }}">
+  <form method="post" action="{{ url_for('list.update', id=id) }}">
     <div class="block">
       <div class="field">
         <label class="label" for="name">Nombre</label>
