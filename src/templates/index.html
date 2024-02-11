@@ -35,6 +35,7 @@
               <tr>
                 <th>Id</th>
                 <th>Nombre</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -42,6 +43,12 @@
                 <tr>
                   <td>{{ list.id }}</td>
                   <td>{{ list.name }}</td>
+                  <td>
+                    <a href="{{ url_for('list.edit', name=list.name) }}">
+                      <i class="fa-regular fa-pen-to-square"></i>
+                    </a>
+                    <i class="fa-regular fa-trash-can"></i>
+                  </td>
                 </tr>
                 {% endfor %}
               </tr>

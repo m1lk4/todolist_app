@@ -27,3 +27,9 @@ def create():
     db.session.commit()
 
     return redirect("/lists")
+
+
+@list_blueprint.get("/<name>")
+def edit(name):
+    name = name
+    return render_template("edit.html", name=name)
