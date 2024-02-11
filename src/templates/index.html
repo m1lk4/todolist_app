@@ -7,28 +7,46 @@
 {% block body %}
 <body>
     <section class="section">
-        <div class="container">
-          <h1 class="title">
-            Lista de tareas
-          </h1>
-          <p class="subtitle">
-            Espacio para ver y crear listas de tareas.
-          </p>
+        <div class="level">
+          <div class="level-left">
+            <div>
+              <p class="title">
+                Lista de tareas
+              </p> 
+              <p class="subtitle is-5">
+                Espacio para ver y crear listas de tareas
+              </p>
+            </div>
+          </div>
+          <div class="level-right">
+            <a class="button is-responsive is-primary is-pulled-right" href="{{ url_for('list.new') }}">
+              <span class="icon">
+                <i class="fa-solid fa-plus"></i>
+              </span>
+              <span>Nueva lista</span>
+            </a>
+          </div>
         </div>
     </section>
     <section class="section">
         <div class="container">
-            <a class="button is-responsive is-primary is-pulled-right" href="{{ url_for('list.new') }}">
-                <span class="icon">
-                    <i class="fa-solid fa-plus"></i>
-                </span>
-                <span>Nueva lista</span>
-            </a>
-        </div>
-        <div class="container">
-          {% for list in lists %}
-          <li>{{ list.name }}</li>
-          {% endfor %}
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for list in lists %}
+                <tr>
+                  <td>{{ list.id }}</td>
+                  <td>{{ list.name }}</td>
+                </tr>
+                {% endfor %}
+              </tr>
+            </tbody>
+          </table>
         </div>
     </section>
 </body>

@@ -1,29 +1,28 @@
 {% extends "layout.html" %}
 
-<!DOCTYPE html>
-<html>
 {% block body %}
-<body>
-    <section class="section">
-        <form method="post" action="{{ url_for('list.create') }}" class="box">
-            <h1 class="title">Nueva lista</h1>
-            <div class="field">
-                <label class="label" for="name">Nombre</label>
-                <p>Escriba el nombre de la lista</p>
-                <div class="control">
-                    <input class="input" type="text" id="name" name="name" placeholder="Nombre">
-                </div>
-            </div>
-            <div class="buttons mt-6">
-                <button class="button is-primary" type="submit" href="{{ url_for('list.index') }}">
-                    <span>Guardar</span>
-                </button>
-                <a class="button" href="{{ url_for('list.index') }}">
-                    <span>Cancelar</span>
-                </a>
-            </div>
-        </form>
-    </section>
-</body>
+<section class="section">
+  <h1 class="title">Nueva lista</h1>
+  <form method="post" action="{{ url_for('list.create') }}">
+    <div class="block">
+      <div class="field">
+        <label class="label" for="name">Nombre</label>
+        <p>Escriba el nombre de la lista</p>
+        <div class="control">
+          <input class="input" type="text" id="name" name="name" placeholder="Nombre">
+        </div>
+      </div>
+    </div>
+    <div class="block">
+      <div class="buttons">
+        <button class="button is-primary" type="submit" href="{{ url_for('list.index') }}">
+          <span>Guardar</span>
+        </button>
+        <a class="button" href="{{ url_for('list.index') }}">
+          <span>Cancelar</span>
+        </a>
+      </div>
+    </div>
+  </form>
+</section>
 {% endblock %}
-</html>
