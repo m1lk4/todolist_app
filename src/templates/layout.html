@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html>
-{% block head %}
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TodoList</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <script src="https://kit.fontawesome.com/a35da4ceef.js" crossorigin="anonymous"></script>
-  </head>
-{% endblock %}
-<div class="container is-max-desktop">
+  {% block head %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TodoList</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <script src="https://kit.fontawesome.com/a35da4ceef.js" crossorigin="anonymous"></script>
+  {% endblock %}
+</head>
+<body>
+  <div class="container is-max-desktop">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class=flashes>
+      {% for message in messages %}
+        <div class="notification is-primary">
+          <button class="delete"></button>
+          {{ message }}
+        </div>
+      {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
   {% block body %}
   {% endblock %}
-</div>
+  </div>
+</body>
 </html>

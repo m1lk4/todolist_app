@@ -1,6 +1,7 @@
 from flask import Blueprint
 from flask import render_template, redirect
 from flask import request
+from flask import flash
 
 from src.models.list_model import List
 from src.database.todolist_db import db
@@ -41,6 +42,8 @@ def update(id):
     list = List.query.get(id)
     list.name = new_name
     db.session.commit()
+
+    flash("Ha editado la lista")
 
     return redirect("/lists")
 
