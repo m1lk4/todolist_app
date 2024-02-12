@@ -47,7 +47,9 @@
                     <a href="{{ url_for('list.edit', id=list.id) }}">
                       <i class="fa-regular fa-pen-to-square"></i>
                     </a>
-                    <i class="fa-regular fa-trash-can"></i>
+                    <a href="{{ url_for('list.delete', id=list.id) }}">
+                      <i class="fa-regular fa-trash-can"></i>
+                    </a>
                   </td>
                 </tr>
                 {% endfor %}

@@ -43,3 +43,12 @@ def update(id):
     db.session.commit()
 
     return redirect("/lists")
+
+
+@list_blueprint.get("/delete/<int:id>")
+def delete(id):
+    list = List.query.get(id)
+    db.session.delete(list)
+    db.session.commit()
+
+    return redirect("/lists")
