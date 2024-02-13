@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<section class="section">
+  <h1 class="title">Nueva tarea</h1>
+  <form method="post" action="{{ url_for('list.create') }}">
+    <div class="block">
+      <div class="field">
+        <label class="label" for="name">Tarea</label>
+        <p>Escriba su tarea</p>
+        <div class="control">
+          <input class="input" type="text" id="name" name="name" placeholder="Nueva tarea">
+        </div>
+      </div>
+    </div>
+    <div class="block">
+      <div class="buttons">
+        <button class="button is-primary" type="submit" href="{{ url_for('list.index') }}">
+          <span>Guardar</span>
+        </button>
+        <a class="button" href="{{ url_for('list.show', id=id) }}">
+          <span>Cancelar</span>
+        </a>
+      </div>
+    </div>
+  </form>
+</section>
+{% endblock %}
