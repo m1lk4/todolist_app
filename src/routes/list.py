@@ -43,7 +43,7 @@ def update(id):
     list.name = new_name
     db.session.commit()
 
-    flash("Ha editado la lista")
+    flash("Ha editado la lista", "is-info")
 
     return redirect("/lists")
 
