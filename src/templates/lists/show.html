@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block body %}
+  <section class="section">
+    <div class="level">
+      <div class="level-left">
+        <div>
+          <p class="title">Lista "{{ list.name }}"</p>
+        </div>
+      </div>
+      <div class="level-right">
+        <a class="button is-responsive is-primary is-pulled-right" href="{{ url_for('list.new') }}">
+          <span class="icon">
+            <i class="fa-solid fa-plus"></i>
+          </span>
+          <span>Nueva tarea</span>
+        </a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

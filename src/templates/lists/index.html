@@ -28,16 +28,13 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th></th>
+                <th>Lista</th>
               </tr>
             </thead>
             <tbody>
                 {% for list in lists %}
                 <tr>
-                  <td>{{ list.id }}</td>
-                  <td>{{ list.name }}</td>
+                  <td><a href="{{ url_for('list.show', id=list.id) }}">{{ list.name }}</a></td>
                   <td>
                     <a href="{{ url_for('list.edit', id=list.id) }}">
                       <i class="fa-regular fa-pen-to-square"></i>
