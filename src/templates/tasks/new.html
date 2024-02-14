@@ -3,7 +3,7 @@
 {% block body %}
 <section class="section">
   <h1 class="title">Nueva tarea</h1>
-  <form method="post" action="{{ url_for('list.create') }}">
+  <form method="post" action="{{ url_for('task.create', id=id) }}">
     <div class="block">
       <div class="field">
         <label class="label" for="name">Tarea</label>
@@ -15,7 +15,7 @@
     </div>
     <div class="block">
       <div class="buttons">
-        <button class="button is-primary" type="submit" href="{{ url_for('list.index') }}">
+        <button class="button is-primary" type="submit" href="{{ url_for('list.show', id=id) }}">
           <span>Guardar</span>
         </button>
         <a class="button" href="{{ url_for('list.show', id=id) }}">

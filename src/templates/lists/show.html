@@ -17,4 +17,26 @@
       </div>
     </div>
   </section>
+  <section class="section">
+    <div class="container">
+      <div class="subtitle">Tareas</div>
+      {% for task in tasks %}
+      <div class="level">
+        <div class="level-left">
+          <ul>
+            <li>{{ task.name }}</li>
+          </ul>
+        </div>
+        <div class="level-rigth">
+          <a href="">
+            <i class="fa-regular fa-pen-to-square"></i>
+          </a>
+          <a href="">
+            <i class="fa-regular fa-trash-can"></i>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+</section>
 {% endblock %}

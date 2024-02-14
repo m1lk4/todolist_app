@@ -4,6 +4,7 @@ from flask import request
 from flask import flash
 
 from src.models.list_model import List
+from src.models.task_model import Task
 from src.database.todolist_db import db
 
 list_blueprint = Blueprint("list", __name__, url_prefix="/lists")
@@ -60,5 +61,6 @@ def delete(id):
 @list_blueprint.get("/<int:id>")
 def show(id):
     list = List.query.get(id)
+    tasks = Task.query.all()
 
-    return render_template("lists/show.html", list=list)
+    return render_template("lists/show.html", list=list, tasks=tasks)
