@@ -2,26 +2,32 @@
 
 {% block body %}
     <section class="section">
-        <div class="level">
-          <div class="level-left">
-            <div>
-              <p class="title">
-                Lista de tareas
-              </p> 
-              <p class="subtitle is-5">
-                Espacio para ver y crear listas de tareas
-              </p>
-            </div>
-          </div>
-          <div class="level-right">
-            <a class="button is-responsive is-primary is-pulled-right" href="{{ url_for('list.new') }}">
-              <span class="icon">
-                <i class="fa-solid fa-plus"></i>
-              </span>
-              <span>Nueva lista</span>
-            </a>
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li class="is-active"><a href="#" aria-current="page">Listas</a></li>
+        </ul>
+      </nav>
+      <div class="level">
+        <div class="level-left">
+          <div>
+            <p class="title">
+              Lista de tareas
+            </p> 
+            <p class="subtitle is-5">
+              Espacio para ver y crear listas de tareas
+            </p>
           </div>
         </div>
+        <div class="level-right">
+          <a class="button is-responsive is-primary is-pulled-right" href="{{ url_for('list.new') }}">
+            <span class="icon">
+              <i class="fa-solid fa-plus"></i>
+            </span>
+            <span>Nueva lista</span>
+          </a>
+        </div>
+      </div>
     </section>
     <section class="section">
         <div class="container">

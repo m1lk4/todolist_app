@@ -12,8 +12,9 @@ task_blueprint = Blueprint("task", __name__, url_prefix="/lists/<int:id>/tasks")
 
 @task_blueprint.get("/")
 def new(id):
+    list = List.query.get(id)
 
-    return render_template("tasks/new.html", id=id)
+    return render_template("tasks/new.html", list=list)
 
 
 @task_blueprint.post("/")

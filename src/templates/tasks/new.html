@@ -2,8 +2,16 @@
 
 {% block body %}
 <section class="section">
+  <nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="{{ url_for('list.index') }}">Listas</a></li>
+      <li><a href="{{ url_for('list.show', id=list.id) }}">Lista de <em>{{ list.name }}</em></a></li>
+      <li class="is-active"><a href="#" aria-current="page">Nueva tarea</a></li>
+    </ul>
+  </nav>
   <h1 class="title">Nueva tarea</h1>
-  <form method="post" action="{{ url_for('task.create', id=id) }}">
+  <form method="post" action="{{ url_for('task.create', id=list.id) }}">
     <div class="block">
       <div class="field">
         <label class="label" for="name">Tarea</label>
@@ -15,10 +23,10 @@
     </div>
     <div class="block">
       <div class="buttons">
-        <button class="button is-primary" type="submit" href="{{ url_for('list.show', id=id) }}">
+        <button class="button is-primary" type="submit" href="{{ url_for('list.show', id=list.id) }}">
           <span>Guardar</span>
         </button>
-        <a class="button" href="{{ url_for('list.show', id=id) }}">
+        <a class="button" href="{{ url_for('list.show', id=list.id) }}">
           <span>Cancelar</span>
         </a>
       </div>
