@@ -2,6 +2,7 @@ from flask import Blueprint
 from flask import render_template
 from flask import request
 from flask import redirect, url_for
+from flask import flash
 
 from src.database.todolist_db import db
 from src.models.task_model import Task
@@ -23,6 +24,8 @@ def create(list_id):
     db.session.add(task)
     db.session.commit()
 
+    flash("Task created", "success")
+
     return redirect(url_for("list.show", list_id=list_id))
 
 
@@ -41,6 +44,8 @@ def update(list_id, task_id):
     task.name = task_name
     db.session.commit()
 
+    flash("Task edited", "success")
+
     return redirect(url_for("list.show", list_id=list_id))
 
 
@@ -49,5 +54,7 @@ def delete(list_id, task_id):
     task = Task.query.get(task_id)
     db.session.delete(task)
     db.session.commit()
+
+    flash("Task deleted", "success")
 
     return redirect(url_for("list.show", list_id=list_id))

@@ -27,6 +27,8 @@ def create():
     db.session.add(list)
     db.session.commit()
 
+    flash("List created", "success")
+
     return redirect(url_for("list.index"))
 
 
@@ -44,7 +46,7 @@ def update(list_id):
     list.name = new_name
     db.session.commit()
 
-    flash("Ha editado la lista", "success")
+    flash("List edited", "success")
 
     return redirect(url_for("list.index"))
 
@@ -54,6 +56,8 @@ def delete(list_id):
     list = List.query.get(list_id)
     db.session.delete(list)
     db.session.commit()
+
+    flash("List deleted", "success")
 
     return redirect(url_for("list.index"))
 
