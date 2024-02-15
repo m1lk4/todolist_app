@@ -31,3 +31,13 @@ def edit(id, task_id):
     task = Task.query.get(task_id)
 
     return render_template("/tasks/edit.html", list=list, task=task)
+
+
+@task_blueprint.post("/<int:task_id>/edit")
+def update(id, task_id):
+    task_name = request.form["name"]
+    task = Task.query.get(task_id)
+    task.name = task_name
+    db.session.commit()
+
+    return redirect(url_for("list.show", id=id))
