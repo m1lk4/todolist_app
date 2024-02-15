@@ -5,12 +5,12 @@
   <nav class="breadcrumb" aria-label="breadcrumbs">
     <ul>
       <li><a href="{{ url_for('list.index') }}">Lists</a></li>
-      <li><a href="{{ url_for('list.show', id=list.id) }}"><em>{{ list.name }}</em></a></li>
+      <li><a href="{{ url_for('list.show', list_id=list.id) }}"><em>{{ list.name }}</em></a></li>
       <li class="is-active"><a href="#" aria-current="page">Create</a></li>
     </ul>
   </nav>
   <h1 class="title">New task</h1>
-  <form method="post" action="{{ url_for('task.create', id=list.id) }}">
+  <form method="post" action="{{ url_for('task.create', list_id=list.id) }}">
     <div class="block">
       <div class="field">
         <label class="label" for="name">Task</label>
@@ -22,10 +22,10 @@
     </div>
     <div class="block">
       <div class="buttons">
-        <button class="button is-primary" type="submit" href="{{ url_for('list.show', id=list.id) }}">
+        <button class="button is-primary" type="submit" href="{{ url_for('list.show', list_id=list.id) }}">
           <span>Save</span>
         </button>
-        <a class="button" href="{{ url_for('list.show', id=list.id) }}">
+        <a class="button" href="{{ url_for('list.show', list_id=list.id) }}">
           <span>Cancel</span>
         </a>
       </div>

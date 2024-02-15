@@ -2,6 +2,11 @@
 
 {% block body %}
     <section class="section">
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          <li class="is-active"><a href="#" aria-current="page">Lists</a></li>
+        </ul>
+      </nav>
       <div class="level">
         <div class="level-left">
           <div>
@@ -34,12 +39,12 @@
             <tbody>
                 {% for list in lists %}
                 <tr>
-                  <td><a href="{{ url_for('list.show', id=list.id) }}">{{ list.name }}</a></td>
+                  <td><a href="{{ url_for('list.show', list_id=list.id) }}">{{ list.name }}</a></td>
                   <td>
-                    <a href="{{ url_for('list.edit', id=list.id) }}">
+                    <a href="{{ url_for('list.edit', list_id=list.id) }}">
                       <i class="fa-regular fa-pen-to-square"></i>
                     </a>
-                    <a href="{{ url_for('list.delete', id=list.id) }}">
+                    <a href="{{ url_for('list.delete', list_id=list.id) }}">
                       <i class="fa-regular fa-trash-can"></i>
                     </a>
                   </td>

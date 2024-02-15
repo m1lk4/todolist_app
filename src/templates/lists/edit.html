@@ -9,7 +9,7 @@
     </ul>
   </nav>
   <h1 class="title">Edit list</h1>
-  <form method="post" action="{{ url_for('list.update', id=list.id) }}">
+  <form method="post" action="{{ url_for('list.update', list_id=list.id) }}">
     <div class="block">
       <div class="field">
         <label class="label" for="name">Name</label>

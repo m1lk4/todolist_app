@@ -30,17 +30,17 @@ def create():
     return redirect(url_for("list.index"))
 
 
-@list_blueprint.get("/<int:id>/edit")
-def edit(id):
-    list = List.query.get(id)
+@list_blueprint.get("/<int:list_id>/edit")
+def edit(list_id):
+    list = List.query.get(list_id)
 
     return render_template("lists/edit.html", list=list)
 
 
-@list_blueprint.post("/<int:id>/edit")
-def update(id):
+@list_blueprint.post("/<int:list_id>/edit")
+def update(list_id):
     new_name = request.form["name"]
-    list = List.query.get(id)
+    list = List.query.get(list_id)
     list.name = new_name
     db.session.commit()
 
@@ -49,18 +49,18 @@ def update(id):
     return redirect(url_for("list.index"))
 
 
-@list_blueprint.get("/delete/<int:id>")
-def delete(id):
-    list = List.query.get(id)
+@list_blueprint.get("/delete/<int:list_id>")
+def delete(list_id):
+    list = List.query.get(list_id)
     db.session.delete(list)
     db.session.commit()
 
     return redirect(url_for("list.index"))
 
 
-@list_blueprint.get("/<int:id>")
-def show(id):
-    list = List.query.get(id)
+@list_blueprint.get("/<int:list_id>")
+def show(list_id):
+    list = List.query.get(list_id)
     tasks = Task.query.all()
 
     return render_template("lists/show.html", list=list, tasks=tasks)
