@@ -33,7 +33,7 @@
                 <a href="{{ url_for('task.edit', id=list.id, task_id=task.id) }}">
                   <i class="fa-regular fa-pen-to-square"></i>
                 </a>
-                <a href="">
+                <a href="{{ url_for('task.delete', id=list.id, task_id=task.id) }}">
                   <i class="fa-regular fa-trash-can"></i>
                 </a>
               </td>

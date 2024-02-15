@@ -41,3 +41,12 @@ def update(id, task_id):
     db.session.commit()
 
     return redirect(url_for("list.show", id=id))
+
+
+@task_blueprint.get("/delete/<int:task_id>")
+def delete(id, task_id):
+    task = Task.query.get(task_id)
+    db.session.delete(task)
+    db.session.commit()
+
+    return redirect(url_for("list.show", id=id))
