@@ -2,23 +2,23 @@
 
 {% block body %}
 <section class="section">
-  <h1 class="title">Modificar lista</h1>
-  <form method="post" action="{{ url_for('list.update', id=id) }}">
+  <h1 class="title">Modificar tarea</h1>
+  <form method="post" action="">
     <div class="block">
       <div class="field">
         <label class="label" for="name">Nombre</label>
-        <p>Modifique el nombre de la lista</p>
+        <p>Modifique la tarea</p>
         <div class="control">
-          <input class="input" type="text" id="name" name="name" placeholder="Nombre" value="{{ name }}">
+          <input class="input" type="text" id="name" name="name" placeholder="Nombre" value="{{ task.name }}">
         </div>
       </div>
     </div>
     <div class="block">
       <div class="buttons">
-        <button class="button is-primary" type="submit" href="{{ url_for('list.index') }}">
+        <button class="button is-primary" type="submit" href="">
           <span>Guardar</span>
         </button>
-        <a class="button" href="{{ url_for('list.index') }}">
+        <a class="button" href="{{ url_for('list.show', id=list.id) }}">
           <span>Cancelar</span>
         </a>
       </div>

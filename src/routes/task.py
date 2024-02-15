@@ -5,6 +5,7 @@ from flask import redirect, url_for
 
 from src.database.todolist_db import db
 from src.models.task_model import Task
+from src.models.list_model import List
 
 task_blueprint = Blueprint("task", __name__, url_prefix="/lists/<int:id>/tasks")
 
@@ -22,3 +23,11 @@ def create(id):
     db.session.commit()
 
     return redirect(url_for("list.show", id=id))
+
+
+@task_blueprint.get("/<int:task_id>/edit")
+def edit(id, task_id):
+    list = List.query.get(id)
+    task = Task.query.get(task_id)
+
+    return render_template("/tasks/edit.html", list=list, task=task)
