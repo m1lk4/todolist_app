@@ -33,8 +33,8 @@ def create():
 @list_blueprint.get("/<int:id>/edit")
 def edit(id):
     list = List.query.get(id)
-    name = list.name
-    return render_template("lists/edit.html", name=name, id=id)
+
+    return render_template("lists/edit.html", list=list)
 
 
 @list_blueprint.post("/<int:id>/edit")

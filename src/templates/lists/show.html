@@ -3,15 +3,14 @@
   <section class="section">
     <nav class="breadcrumb" aria-label="breadcrumbs">
       <ul>
-        <li><a href="#">Inicio</a></li>
         <li><a href="{{ url_for('list.index') }}">Listas</a></li>
-        <li class="is-active"><a href="#" aria-current="page">Lista de <em>{{ list.name }}</em></a></li>
+        <li class="is-active"><a href="#" aria-current="page"><em>{{ list.name }}</em></a></li>
       </ul>
     </nav>
     <div class="level">
       <div class="level-left">
         <div>
-          <p class="title">Lista "{{ list.name }}"</p>
+          <p class="title">Lista <em>{{ list.name }}</em></p>
         </div>
       </div>
       <div class="level-right">

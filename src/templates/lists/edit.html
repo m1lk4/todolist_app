@@ -4,19 +4,18 @@
 <section class="section">
   <nav class="breadcrumb" aria-label="breadcrumbs">
     <ul>
-      <li><a href="#">Inicio</a></li>
       <li><a href="{{ url_for('list.index') }}">Listas</a></li>
-      <li class="is-active"><a href="#" aria-current="page">Editar lista</a></li>
+      <li class="is-active"><a href="#" aria-current="page">Editar&nbsp;<em>{{ list.name }}</em></a></li>
     </ul>
   </nav>
   <h1 class="title">Modificar lista</h1>
-  <form method="post" action="{{ url_for('list.update', id=id) }}">
+  <form method="post" action="{{ url_for('list.update', id=list.id) }}">
     <div class="block">
       <div class="field">
         <label class="label" for="name">Nombre</label>
         <p>Modifique el nombre de la lista</p>
         <div class="control">
-          <input class="input" type="text" id="name" name="name" placeholder="Nombre" value="{{ name }}">
+          <input class="input" type="text" id="name" name="name" placeholder="Nombre" value="{{ list.name }}">
         </div>
       </div>
     </div>
