@@ -4,17 +4,17 @@
 <section class="section">
   <nav class="breadcrumb" aria-label="breadcrumbs">
     <ul>
-      <li><a href="{{ url_for('list.index') }}">Listas</a></li>
+      <li><a href="{{ url_for('list.index') }}">Lists</a></li>
       <li><a href="{{ url_for('list.show', id=list.id) }}"><em>{{ list.name }}</em></a></li>
-      <li class="is-active"><a href="#" aria-current="page">Modificar tarea</a></li>
+      <li class="is-active"><a href="#" aria-current="page">Edit</a></li>
     </ul>
   </nav>
-  <h1 class="title">Modificar tarea</h1>
+  <h1 class="title">Edit task</h1>
   <form method="post" action="{{ url_for('task.update', id=list.id, task_id=task.id) }}">
     <div class="block">
       <div class="field">
-        <label class="label" for="name">Nombre</label>
-        <p>Modifique la tarea</p>
+        <label class="label" for="name">Name</label>
+        <p>Edit this task</p>
         <div class="control">
           <input class="input" type="text" id="name" name="name" placeholder="Nombre" value="{{ task.name }}">
         </div>
@@ -23,10 +23,10 @@
     <div class="block">
       <div class="buttons">
         <button class="button is-primary" type="submit" href="{{ url_for('list.show', id=list.id) }}">
-          <span>Guardar</span>
+          <span>Save</span>
         </button>
         <a class="button" href="{{ url_for('list.show', id=list.id) }}">
-          <span>Cancelar</span>
+          <span>Cancel</span>
         </a>
       </div>
     </div>

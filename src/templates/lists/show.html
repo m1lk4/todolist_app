@@ -3,14 +3,14 @@
   <section class="section">
     <nav class="breadcrumb" aria-label="breadcrumbs">
       <ul>
-        <li><a href="{{ url_for('list.index') }}">Listas</a></li>
+        <li><a href="{{ url_for('list.index') }}">Lists</a></li>
         <li class="is-active"><a href="#" aria-current="page"><em>{{ list.name }}</em></a></li>
       </ul>
     </nav>
     <div class="level">
       <div class="level-left">
         <div>
-          <p class="title">Lista <em>{{ list.name }}</em></p>
+          <p class="title">List <em>{{ list.name }}</em></p>
         </div>
       </div>
       <div class="level-right">
@@ -18,7 +18,7 @@
           <span class="icon">
             <i class="fa-solid fa-plus"></i>
           </span>
-          <span>Nueva tarea</span>
+          <span>New task</span>
         </a>
       </div>
     </div>
@@ -28,7 +28,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Tarea</th>
+            <th>Task</th>
           </tr>
         </thead>
         <tbody>

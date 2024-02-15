@@ -4,28 +4,28 @@
 <section class="section">
   <nav class="breadcrumb" aria-label="breadcrumbs">
     <ul>
-      <li><a href="{{ url_for('list.index') }}">Listas</a></li>
-      <li class="is-active"><a href="#" aria-current="page">Nueva lista</a></li>
+      <li><a href="{{ url_for('list.index') }}">Lists</a></li>
+      <li class="is-active"><a href="#" aria-current="page">New list</a></li>
     </ul>
   </nav>
-  <h1 class="title">Nueva lista</h1>
+  <h1 class="title">New list</h1>
   <form method="post" action="{{ url_for('list.create') }}">
     <div class="block">
       <div class="field">
-        <label class="label" for="name">Nombre</label>
-        <p>Escriba el nombre de la lista</p>
+        <label class="label" for="name">Name</label>
+        <p>Write list name</p>
         <div class="control">
-          <input class="input" type="text" id="name" name="name" placeholder="Nombre">
+          <input class="input" type="text" id="name" name="name" placeholder="Name">
         </div>
       </div>
     </div>
     <div class="block">
       <div class="buttons">
         <button class="button is-primary" type="submit" href="{{ url_for('list.index') }}">
-          <span>Guardar</span>
+          <span>Save</span>
         </button>
         <a class="button" href="{{ url_for('list.index') }}">
-          <span>Cancelar</span>
+          <span>Cancel</span>
         </a>
       </div>
     </div>
