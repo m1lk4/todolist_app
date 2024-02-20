@@ -11,3 +11,5 @@ class User(db.Model):
     password = db.Column(db.String(100))
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now)
+
+    tasks = db.relationship("Task", back_populates="user", lazy="dynamic")

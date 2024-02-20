@@ -28,13 +28,21 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Task</th>
+            <th>Task Name</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Assigned To</th>
           </tr>
         </thead>
         <tbody>
             {% for task in tasks %}
             <tr>
               <td>{{ task.name }}</td>
+              <td>{{ task.status }}</td>
+              <td>{{ task.priority }}</td>
+              <td>{{ task.due_date }}</td>
+              <td>{{ task.user_id }}</td>
               <td>
                 <a href="{{ url_for('task.edit', list_id=list.id, task_id=task.id) }}">
                   <i class="fa-regular fa-pen-to-square"></i>

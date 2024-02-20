@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from src.database.todolist_db import db
+from src.models.user_model import User
 
 
 class Task(db.Model):
@@ -11,8 +12,11 @@ class Task(db.Model):
     due_date = db.Column(db.DateTime)
     status = db.Column(db.String, default="New")
     priority = db.Column(db.String)
-    list_id = db.Column(db.Integer, db.ForeignKey("lists.id"))
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
+    list_id = db.Column(db.Integer, db.ForeignKey("lists.id"))
     list = db.relationship("List", back_populates="tasks")
+
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    user = db.relationship("User", back_populates="tasks")
