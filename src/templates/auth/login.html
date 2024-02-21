@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<section class="section">
+  <h1 class="title">Login</h1>
+  <form method="post" action="">
+    <div class="block">
+      <div class="field">
+        <label class="label" for="name">Name</label>
+        <input class="input" type="text" id="name" name="name" placeholder="username">
+      </div>
+
+      <div class="field">
+        <label class="label" for="password">Password</label>
+        <input class="input" type="text" id="pass" name="pass" placeholder="password">
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="buttons">
+        <button class="button is-primary" type="submit" href="{{ url_for('list.index') }}">
+          <span>Login</span>
+        </button>
+        <a class="button" href="{{ url_for('list.index') }}">
+          <span>Cancel</span>
+        </a>
+      </div>
+    </div>
+  </form>
+</section>
+{% endblock %}
