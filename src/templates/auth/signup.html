@@ -7,17 +7,28 @@
     <div class="block">
       <div class="field">
         <label class="label" for="name">Name</label>
-        <input class="input" type="text" id="name" name="name" placeholder="username">
+        <input class="input {% if 'name' in fields %}is-danger{% endif %}" 
+          type="text" id="name" name="name" placeholder="username">
+        {% if 'name' in fields %}
+          <p class="help is-danger">"Name is required."</p>
+        {% endif %}
       </div>
 
       <div class="field">
         <label class="label" for="email">Email</label>
-        <input class="input" type="text" id="email" name="email" placeholder="youremail@...">
+        <input class="input {% if 'email' in fields %}is-danger{% endif %}" 
+          type="text" id="email" name="email" placeholder="youremail@...">
+        {% if 'email' in fields %}
+          <p class="help is-danger">"Email is required."</p>
+        {% endif %}
       </div>
 
       <div class="field">
         <label class="label" for="password">Password</label>
-        <input class="input" type="text" id="password" name="password" placeholder="password">
+        <input class="input {% if 'password' in fields %}is-danger{% endif %}" type="text" id="password" name="password" placeholder="password">
+        {% if 'password' in fields %}
+          <p class="help is-danger">"Password is required."</p>
+        {% endif %}
       </div>
     </div>
 
