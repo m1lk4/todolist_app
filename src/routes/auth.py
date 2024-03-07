@@ -45,11 +45,8 @@ def create():
             return redirect(url_for("auth.signup"))
 
         create_user(name, email, password)
-        flash("Registration successful. You can now log in.", "sucess")
+        flash("Registration successful. You can now log in.", "success")
         return redirect(url_for("list.index"))
-
-    flash("Please fill out all the required fields in the registration form.", "danger")
-    return redirect(url_for("auth.signup"))
 
 
 @auth_blueprint.get("/login")
