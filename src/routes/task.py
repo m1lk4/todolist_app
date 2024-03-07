@@ -5,8 +5,8 @@ from flask import redirect, url_for
 from flask import flash
 
 from src.database.todolist_db import db
-from src.models.task_model import Task
-from src.models.list_model import List
+from src.models.task import Task
+from src.models.list import List
 
 task_blueprint = Blueprint("task", __name__, url_prefix="/lists/<int:list_id>/tasks")
 

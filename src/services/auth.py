@@ -1,6 +1,6 @@
 from werkzeug.security import generate_password_hash
 
-from src.models.user_model import User
+from src.models.user import User
 from src.database.todolist_db import db
 
 

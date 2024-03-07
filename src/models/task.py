@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from src.database.todolist_db import db
-from src.models.user_model import User
+from src.models.user import User
 
 
 class Task(db.Model):

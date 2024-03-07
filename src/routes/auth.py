@@ -3,7 +3,7 @@ from flask import render_template, url_for
 from flask import request, redirect
 from flask import flash
 
-from src.models.user_model import User
+from src.models.user import User
 from src.services.auth import create_user
 
 auth_blueprint = Blueprint("auth", __name__)
