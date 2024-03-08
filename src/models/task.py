@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.database.todolist_db import db
+from src.database.todolist import db
 from src.models.user import User
 
 

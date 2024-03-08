@@ -4,8 +4,6 @@ from flask import request
 from flask import flash
 
 from src.core import board
-from src.models.task import Task
-from src.database.todolist_db import db
 
 list_blueprint = Blueprint("list", __name__, url_prefix="/lists")
 
@@ -49,8 +47,7 @@ def update(list_id):
 @list_blueprint.get("/delete/<int:list_id>")
 def delete(list_id):
     list = board.get_list(list_id)
-    db.session.delete(list)
-    db.session.commit()
+    board.delete_list(list)
 
     flash("List deleted", "success")
 
@@ -60,6 +57,6 @@ def delete(list_id):
 @list_blueprint.get("/<int:list_id>")
 def show(list_id):
     list = board.get_list(list_id)
-    tasks = Task.query.all()
+    tasks = board.list_tasks(list_id=list_id)
 
     return render_template("lists/show.html", list=list, tasks=tasks)

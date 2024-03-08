@@ -4,7 +4,7 @@ from src.routes.list import list_blueprint
 from src.routes.task import task_blueprint
 from src.routes.auth import auth_blueprint
 from src.config import ConfigDev
-from src.database.todolist_db import db
+from src.database.todolist import db
 
 
 def create_app(static_folder="static"):

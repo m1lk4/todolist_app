@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash
 
 from src.models.user import User
-from src.database.todolist_db import db
+from src.database.todolist import db
 
 
 def create_user(name, email, password):
