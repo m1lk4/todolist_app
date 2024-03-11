@@ -3,8 +3,7 @@ from flask import render_template, url_for
 from flask import request, redirect
 from flask import flash
 
-from src.models.user import User
-from src.services.auth import create_user
+from src import auth
 
 auth_blueprint = Blueprint("auth", __name__)
 
@@ -34,17 +33,14 @@ def create():
         )
 
     if name and email and password:
-        if (
-            User.query.filter_by(name=name).first()
-            or User.query.filter_by(email=email).first()
-        ):
+        if auth.has_account(name, email):
             flash(
                 "User or email already exist. Please choose another name or email",
                 "danger",
             )
             return redirect(url_for("auth.signup"))
 
-        create_user(name, email, password)
+        auth.create_user(name, email, password)
         flash("Registration successful. You can now log in.", "success")
         return redirect(url_for("list.index"))
 

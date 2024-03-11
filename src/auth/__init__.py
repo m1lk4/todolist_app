@@ -10,3 +10,10 @@ def create_user(name, email, password):
 
     db.session.add(new_user)
     db.session.commit()
+
+
+def has_account(name, email):
+    return (
+        User.query.filter_by(name=name).first()
+        or User.query.filter_by(email=email).first()
+    )
