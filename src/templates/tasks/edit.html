@@ -19,6 +19,21 @@
           <input class="input" type="text" id="name" name="name" placeholder="Nombre" value="{{ task.name }}">
         </div>
       </div>
+
+      <div class="field">
+        <label class="label" for="status">Status</label>
+        <div class="control">
+          <div class="select">
+            <select name="status">
+              {% for status in task_status %}
+              <option value="{{status}}" {% if status == task.status %}selected{%endif%}>
+                {{status}}
+              </option>
+              {% endfor%}
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="block">
       <div class="buttons">

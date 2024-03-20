@@ -40,12 +40,16 @@ def create_task(**kwargs):
     db.session.commit()
 
 
-def update_task(id, name):
+def update_task(id, name, status):
     task = Task.query.get(id)
     task.name = name
+    task.status = status
     db.session.commit()
 
 
 def delete_task(task):
     db.session.delete(task)
     db.session.commit()
+
+
+task_status = ["New", "Pending", "In progress", "On hold", "Needs review", "Done"]

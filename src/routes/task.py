@@ -12,15 +12,17 @@ task_blueprint = Blueprint("task", __name__, url_prefix="/lists/<int:list_id>/ta
 @task_blueprint.get("/")
 def new(list_id):
     list = board.get_list(list_id)
-    print("Este es el id:", list_id)
+    status = board.task_status
 
-    return render_template("tasks/new.html", list=list)
+    return render_template("tasks/new.html", task_status=status, list=list)
 
 
 @task_blueprint.post("/")
 def create(list_id):
     name = request.form.get("name")
-    board.create_task(name=name, list_id=list_id)
+    status = request.form.get("status")
+    print(status)
+    board.create_task(name=name, status=status, list_id=list_id)
     flash("Task created", "success")
 
     return redirect(url_for("list.show", list_id=list_id))
@@ -31,13 +33,16 @@ def edit(list_id, task_id):
     list = board.get_list(list_id)
     task = board.get_task(task_id)
 
-    return render_template("/tasks/edit.html", list=list, task=task)
+    return render_template(
+        "/tasks/edit.html", list=list, task=task, task_status=board.task_status
+    )
 
 
 @task_blueprint.post("/<int:task_id>/edit")
 def update(list_id, task_id):
     name = request.form["name"]
-    board.update_task(task_id, name)
+    status = request.form["status"]
+    board.update_task(task_id, name, status)
     flash("Task edited", "success")
 
     return redirect(url_for("list.show", list_id=list_id))
