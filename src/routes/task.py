@@ -4,6 +4,7 @@ from flask import request
 from flask import redirect, url_for
 from flask import flash
 
+from datetime import datetime
 from src.core import board
 
 task_blueprint = Blueprint("task", __name__, url_prefix="/lists/<int:list_id>/tasks")
@@ -21,8 +22,9 @@ def new(list_id):
 def create(list_id):
     name = request.form.get("name")
     status = request.form.get("status")
-    print(status)
-    board.create_task(name=name, status=status, list_id=list_id)
+    due_date = request.form.get("due_date")
+    print(due_date)
+    board.create_task(name=name, status=status, list_id=list_id, due_date=due_date)
     flash("Task created", "success")
 
     return redirect(url_for("list.show", list_id=list_id))

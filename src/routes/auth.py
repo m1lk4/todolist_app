@@ -42,10 +42,15 @@ def create():
 
         auth.create_user(name, email, password)
         flash("Registration successful. You can now log in.", "success")
-        return redirect(url_for("list.index"))
+        return redirect(url_for("auth.login"))
 
 
 @auth_blueprint.get("/login")
 def login():
 
     return render_template("auth/login.html")
+
+
+@auth_blueprint.post("/login")
+def join():
+    return redirect(url_for("list.index"))

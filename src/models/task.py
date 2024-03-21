@@ -9,7 +9,7 @@ class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     description = db.Column(db.Text)
-    due_date = db.Column(db.DateTime)
+    due_date = db.Column(db.Date)
     status = db.Column(db.String, default="New")
     priority = db.Column(db.String)
     created_at = db.Column(db.DateTime, default=datetime.now())
