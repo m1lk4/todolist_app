@@ -52,5 +52,11 @@ def login():
 
 
 @auth_blueprint.post("/login")
-def join():
-    return redirect(url_for("list.index"))
+def authenticate():
+    name = request.form.get("name")
+    password = request.form.get("password")
+    if auth.has_account(name=name) and auth.check_password(name, password):
+
+        return redirect(url_for("list.index"))
+
+    return redirect(url_for("auth.login"))
