@@ -6,11 +6,11 @@
   <form method="post" action="{{ url_for('auth.create') }}">
     <div class="block">
       <div class="field">
-        <label class="label" for="name">Name</label>
-        <input class="input {% if 'name' in fields %}is-danger{% endif %}" 
-          type="text" id="name" name="name" placeholder="username">
-        {% if 'name' in fields %}
-          <p class="help is-danger">"Name is required."</p>
+        <label class="label" for="username">Username</label>
+        <input class="input {% if 'username' in fields %}is-danger{% endif %}" 
+          type="text" id="username" name="username" placeholder="username">
+        {% if 'username' in fields %}
+          <p class="help is-danger">"Username is required."</p>
         {% endif %}
       </div>
 

@@ -16,12 +16,12 @@ def signup():
 
 @auth_blueprint.post("/signup")
 def create():
-    name = request.form.get("name")
+    username = request.form.get("username")
     email = request.form.get("email")
     password = request.form.get("password")
 
-    if not name or (not email) or (not password):
-        fields = {"name": name, "email": email, "password": password}
+    if not username or (not email) or (not password):
+        fields = {"username": username, "email": email, "password": password}
         unfield = []
         for field_name, field in fields.items():
             if not field:
@@ -32,15 +32,15 @@ def create():
             fields=unfield,
         )
 
-    if name and email and password:
-        if auth.has_account(name, email):
+    if username and email and password:
+        if auth.has_account(username, email):
             flash(
-                "User or email already exist. Please choose another name or email",
+                "User or email already exist. Please choose another username or email",
                 "danger",
             )
             return redirect(url_for("auth.signup"))
 
-        auth.create_user(name, email, password)
+        auth.create_user(username, email, password)
         flash("Registration successful. You can now log in.", "success")
         return redirect(url_for("auth.login"))
 
@@ -53,9 +53,9 @@ def login():
 
 @auth_blueprint.post("/login")
 def authenticate():
-    name = request.form.get("name")
+    username = request.form.get("username")
     password = request.form.get("password")
-    if auth.has_account(name=name) and auth.check_password(name, password):
+    if auth.has_account(username=username) and auth.check_password(username, password):
 
         return redirect(url_for("list.index"))
 
