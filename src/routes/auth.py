@@ -17,6 +17,8 @@ def signup():
 @auth_blueprint.post("/signup")
 def create():
     username = request.form.get("username")
+    name = request.form.get("name")
+    lastname = request.form.get("lastname")
     email = request.form.get("email")
     password = request.form.get("password")
 
@@ -40,7 +42,7 @@ def create():
             )
             return redirect(url_for("auth.signup"))
 
-        auth.create_user(username, email, password)
+        auth.create_user(username, name, lastname, email, password)
         flash("Registration successful. You can now log in.", "success")
         return redirect(url_for("auth.login"))
 

@@ -5,9 +5,11 @@ from src.models.user import User
 from src.database.todolist import db
 
 
-def create_user(username, email, password):
+def create_user(username, name, lastname, email, password):
     password = generate_password_hash(password)
-    new_user = User(username=username, email=email, password=password)
+    new_user = User(
+        username=username, name=name, lastname=lastname, email=email, password=password
+    )
 
     db.session.add(new_user)
     db.session.commit()

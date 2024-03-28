@@ -15,6 +15,24 @@
       </div>
 
       <div class="field">
+        <label class="label" for="name">Name</label>
+        <input class="input {% if 'name' in fields %}is-danger{% endif %}" 
+          type="text" id="name" name="name" placeholder="name">
+        {% if 'name' in fields %}
+          <p class="help is-danger">"Name is required."</p>
+        {% endif %}
+      </div>
+
+      <div class="field">
+        <label class="label" for="lastname">Lastname</label>
+        <input class="input {% if 'lastname' in fields %}is-danger{% endif %}" 
+          type="text" id="lastname" name="lastname" placeholder="lastname">
+        {% if 'lastname' in fields %}
+          <p class="help is-danger">"Lastname is required."</p>
+        {% endif %}
+      </div>
+
+      <div class="field">
         <label class="label" for="email">Email</label>
         <input class="input {% if 'email' in fields %}is-danger{% endif %}" 
           type="text" id="email" name="email" placeholder="youremail@...">

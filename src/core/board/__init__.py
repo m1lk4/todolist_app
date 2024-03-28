@@ -1,5 +1,6 @@
 from src.models.list import List
 from src.models.task import Task
+from src.models.user import User
 from src.database.todolist import db
 
 
@@ -53,3 +54,17 @@ def delete_task(task):
 
 
 task_status = ["New", "Pending", "In progress", "On hold", "Needs review", "Done"]
+
+
+def list_user_fullname(user_fullname=None):
+    list_fullname = []
+    for row in User.query.all():
+        fullname = row.name + " " + row.lastname
+        list_fullname.append(fullname)
+        if fullname == user_fullname:
+            userid = row.id
+            print(userid)
+            return userid
+    print(list_fullname)
+
+    return list_fullname

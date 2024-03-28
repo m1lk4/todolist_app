@@ -41,6 +41,19 @@
         </div>
       </div>
 
+      <div class="field">
+        <label class="label" for="assigned_to">Assigned_to</label>
+        <div class="control">
+          <div class="select">
+            <select name="assigned_to">
+              {% for user in list_users_fullname %}
+              <option value="{{user}}">{{user}}</option>
+              {% endfor%}
+            </select>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="block">
       <div class="buttons">
