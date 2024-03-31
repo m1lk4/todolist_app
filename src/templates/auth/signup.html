@@ -35,7 +35,7 @@
       <div class="field">
         <label class="label" for="email">Email</label>
         <input class="input {% if 'email' in fields %}is-danger{% endif %}" 
-          type="text" id="email" name="email" placeholder="youremail@...">
+          type="email" id="email" name="email" placeholder="youremail@...">
         {% if 'email' in fields %}
           <p class="help is-danger">"Email is required."</p>
         {% endif %}
@@ -43,7 +43,15 @@
 
       <div class="field">
         <label class="label" for="password">Password</label>
-        <input class="input {% if 'password' in fields %}is-danger{% endif %}" type="text" id="password" name="password" placeholder="password">
+        <input class="input {% if 'password' in fields %}is-danger{% endif %}" type="password" id="password" name="password" placeholder="password">
+        {% if 'password' in fields %}
+          <p class="help is-danger">"Password is required."</p>
+        {% endif %}
+      </div>
+
+      <div class="field">
+        <label class="label" for="rpassword">Password</label>
+        <input class="input" type="password" id="rpassword" name="rpassword" placeholder="repeat password">
         {% if 'password' in fields %}
           <p class="help is-danger">"Password is required."</p>
         {% endif %}
@@ -55,7 +63,7 @@
         <button class="button is-primary" type="submit" href="{{ url_for('list.index') }}">
           <span>Signup</span>
         </button>
-        <a class="button" href="{{ url_for('list.index') }}">
+        <a class="button" href="{{ url_for('home.homepage') }}">
           <span>Cancel</span>
         </a>
       </div>

@@ -4,17 +4,20 @@ from flask import request
 from flask import flash
 
 from src.core import board
+from src import auth
 
 list_blueprint = Blueprint("list", __name__, url_prefix="/lists")
 
 
 @list_blueprint.get("/")
+@auth.login_required
 def index():
     lists = board.list_lists()
     return render_template("lists/index.html", lists=lists)
 
 
 @list_blueprint.get("/new")
+@auth.login_required
 def new():
     return render_template("lists/new.html")
 
@@ -29,6 +32,7 @@ def create():
 
 
 @list_blueprint.get("/<int:list_id>/edit")
+@auth.login_required
 def edit(list_id):
     list = board.get_list(list_id)
 
@@ -45,6 +49,7 @@ def update(list_id):
 
 
 @list_blueprint.get("/delete/<int:list_id>")
+@auth.login_required
 def delete(list_id):
     list = board.get_list(list_id)
     board.delete_list(list)
@@ -55,6 +60,7 @@ def delete(list_id):
 
 
 @list_blueprint.get("/<int:list_id>")
+@auth.login_required
 def show(list_id):
     list = board.get_list(list_id)
     tasks = board.list_tasks(list_id=list_id)

@@ -2,6 +2,7 @@ from flask import Blueprint
 from flask import render_template, url_for
 from flask import request, redirect
 from flask import flash
+from flask import session
 
 from src import auth
 
@@ -21,6 +22,7 @@ def create():
     lastname = request.form.get("lastname")
     email = request.form.get("email")
     password = request.form.get("password")
+    rpassword = request.form.get("rpassword")
 
     if not username or (not email) or (not password):
         fields = {"username": username, "email": email, "password": password}
@@ -41,10 +43,13 @@ def create():
                 "danger",
             )
             return redirect(url_for("auth.signup"))
-
-        auth.create_user(username, name, lastname, email, password)
-        flash("Registration successful. You can now log in.", "success")
-        return redirect(url_for("auth.login"))
+        elif password == rpassword:
+            auth.create_user(username, name, lastname, email, password)
+            flash("Registration successful. You can now log in.", "success")
+            return redirect(url_for("auth.login"))
+        else:
+            flash("Password is incorrect.", "danger")
+            return redirect(url_for("auth.signup"))
 
 
 @auth_blueprint.get("/login")
@@ -58,7 +63,20 @@ def authenticate():
     username = request.form.get("username")
     password = request.form.get("password")
     if auth.has_account(username=username) and auth.check_password(username, password):
+        user = auth.get_user(username)
+        session["user_id"] = user.id
+        flash("You have logged in successfully.", "success")
 
-        return redirect(url_for("list.index"))
+        return redirect(url_for("home.homepage"))
+
+    return redirect(url_for("auth.login"))
+
+
+@auth_blueprint.get("/logout")
+@auth.login_required
+def logout():
+    del session["user_id"]
+    session.clear()
+    flash("The session has been closed successfully.", "success")
 
     return redirect(url_for("auth.login"))

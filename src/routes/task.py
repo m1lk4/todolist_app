@@ -6,11 +6,13 @@ from flask import flash
 
 from datetime import datetime
 import src.core.board as listfun
+from src import auth
 
 task_blueprint = Blueprint("task", __name__, url_prefix="/lists/<int:list_id>/tasks")
 
 
 @task_blueprint.get("/")
+@auth.login_required
 def new(list_id):
     list = listfun.get_list(list_id)
     status = listfun.task_status
@@ -46,6 +48,7 @@ def create(list_id):
 
 
 @task_blueprint.get("/<int:task_id>/edit")
+@auth.login_required
 def edit(list_id, task_id):
     list = listfun.get_list(list_id)
     task = listfun.get_task(task_id)
@@ -66,6 +69,7 @@ def update(list_id, task_id):
 
 
 @task_blueprint.get("/delete/<int:task_id>")
+@auth.login_required
 def delete(list_id, task_id):
     task = listfun.get_task(task_id)
     listfun.delete_task(task)
