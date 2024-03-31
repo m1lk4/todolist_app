@@ -10,18 +10,30 @@
   <script src="{{ url_for('static', filename='js/flashes.js') }}"></script>
   {% endblock %}
 </head>
-<body>
+<body class="has-background-grey-lighter">
   <nav class="navbar is-dark" role="navigation" aria-label="main navigation"">
     <div class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">
+        <a class="navbar-item" href="{{ url_for('home.homepage') }}">
           Home
         </a>
+        {% if 'user_id' in session %}
         <a class="navbar-item" href="{{ url_for('list.index') }}">
           My lists
         </a>
+        {% endif %}
       </div>
       <div class="navbar-end">
+        {% if 'user_id' in session %}
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-light" href="{{ url_for('auth.logout') }}">
+              Log out
+            </a>
+          </div>
+        </div>
+        {% endif %}
+        {% if 'user_id' not in session %}
         <div class="buttons">
           <a class="button is-black" href="{{ url_for('auth.signup') }}">
             <strong>Sign up</strong>
@@ -30,13 +42,14 @@
             Log in
           </a>
         </div>
+        {% endif %}
       </div>
     </div>
   </nav>
-  <div class="container is-max-desktop">
+  <section class="container is-max-desktop has-background-white">
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-      <div class=flashes>
+      <div class="flashes">
       {% for category, message in messages %}
         <div class="notification is-{{ category }}">
           <button class="delete"></button>
@@ -48,6 +61,8 @@
   {% endwith %}
   {% block body %}
   {% endblock %}
-  </div>
+    </section>
+{% block home %}
+{% endblock %}
 </body>
 </html>
