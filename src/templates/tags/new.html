@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<section class="section">
+<div class="hero-head">
+  <h1 class="title">New tag</h1>
+  <form method="post" action="">
+    <div class="block">
+
+      <div class="field">
+        <label class="label" for="name">Tag</label>
+        <p>Write your tag</p>
+        <div class="control">
+          <input class="input" type="text" id="name" name="name" placeholder="New tag">
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="buttons">
+        <button class="button is-primary" type="submit" href="">
+          <span>Save</span>
+        </button>
+        <a class="button" href="">
+          <span>Cancel</span>
+        </a>
+      </div>
+    </div>
+  </form>
+</div>
+</section>
+{% endblock %}

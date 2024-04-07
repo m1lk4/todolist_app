@@ -3,6 +3,8 @@ from datetime import datetime
 from src.database.todolist import db
 from src.models.user import User
 
+from src.models import tags_tasks_association
+
 
 class Task(db.Model):
     __tablename__ = "tasks"
@@ -20,3 +22,6 @@ class Task(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     user = db.relationship("User", back_populates="tasks")
+
+
+tags = db.relationship("Tag", secondary=tags_tasks_association, backref="tasks")

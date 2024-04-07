@@ -54,6 +54,19 @@
         </div>
       </div>
 
+      <div class="field">
+        <label class="label" for="tag">Tags</label>
+        <div class="control">
+          <div class="select is-multiple">
+            <select multiple size="8" name="tag">
+              {% for tag in tags %}
+              <option value="{{tag}}">{{tag}}</option>
+              {% endfor%}
+            </select>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="block">
       <div class="buttons">

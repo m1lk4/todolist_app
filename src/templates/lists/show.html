@@ -30,6 +30,7 @@
           <tr>
             <th></th>
             <th>Task Name</th>
+            <th>Tags</th>
             <th>Status</th>
             <th>Priority</th>
             <th>Due Date</th>
@@ -42,6 +43,7 @@
               {% if task.status=="Done" %}
                 <td><i class="fa-solid fa-circle-check"></i></td>
                 <td><strike>{{ task.name }}</strike></td>
+                <td><strike>tags</strike></td>
                 <td><strike>{{ task.status }}</strike></td>
                 <td><strike>{{ task.priority }}</strike></td>
                 <td><strike>{{ task.due_date }}</strike></td>
@@ -49,6 +51,7 @@
               {% else %}
               <td><i class="fa-regular fa-circle"></i></td>
               <td>{{ task.name }}</td>
+              <td>tags</td>
               <td>{{ task.status }}</td>
               <td>{{ task.priority }}</td>
               <td>{{ task.due_date }}</td>

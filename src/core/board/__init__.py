@@ -1,6 +1,7 @@
 from src.models.list import List
 from src.models.task import Task
 from src.models.user import User
+from src.models.tag import Tag
 from src.database.todolist import db
 
 
@@ -68,3 +69,18 @@ def list_user_fullname(user_fullname=None):
     print(list_fullname)
 
     return list_fullname
+
+
+def create_tag(name):
+    if name and name != "":
+        try:
+            db.session.add(Tag(name=name))
+            db.session.commit()
+        except Exception as e:
+            print("Error desconocido:", e)
+
+
+def list_tags():
+    tags_list = [row.name for row in Tag.query.all()]
+
+    return tags_list
