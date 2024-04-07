@@ -25,7 +25,8 @@ def new():
 @list_blueprint.post("/")
 def create():
     name = request.form.get("name")
-    board.create_list(name=name)
+    description = request.form.get("description")
+    board.create_list(name=name, description=description)
     flash("List created", "success")
 
     return redirect(url_for("list.index"))
