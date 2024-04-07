@@ -10,7 +10,7 @@
   <script src="{{ url_for('static', filename='js/flashes.js') }}"></script>
   {% endblock %}
 </head>
-<body class="has-background-grey-lighter">
+<body class="has-background-primary">
   <nav class="navbar is-dark" role="navigation" aria-label="main navigation"">
     <div class="navbar-menu">
       <div class="navbar-start">
@@ -46,7 +46,7 @@
       </div>
     </div>
   </nav>
-  <section class="container is-max-desktop has-background-white">
+  <section class="container is-max-desktop has-background-white hero is-halfheight">
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
       <div class="flashes">
@@ -61,8 +61,15 @@
   {% endwith %}
   {% block body %}
   {% endblock %}
-    </section>
+  </section>
 {% block home %}
 {% endblock %}
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>TodoList</strong> by <a href="https://www.linkedin.com/in/ivanoffmilka/">Milka Ivanoff</a>.
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
