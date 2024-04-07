@@ -19,40 +19,60 @@
           </div>
         </div>
         <div class="level-right">
-          <a class="button is-responsive is-primary is-pulled-right" href="{{ url_for('list.new') }}">
-            <span class="icon">
-              <i class="fa-solid fa-plus"></i>
-            </span>
-            <span>New list</span>
-          </a>
+          <div class="level-item">
+            <a class="button is-responsive is-success is-pulled-right" href="{{ url_for('list.new') }}">
+              <span class="icon">
+                <i class="fa-solid fa-plus"></i>
+              </span>
+              <span>New list</span>
+            </a>
+          </div>
+          <div class="level-item">
+            <a class="button is-responsive is-success is-pulled-right" href="{{ url_for('list.new_file') }}">
+              <span class="icon">
+                <i class="fa-solid fa-upload"></i>
+              </span>
+              <span>From CSV file</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
     <section class="section">
-        <div class="container">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>List</th>
-              </tr>
-            </thead>
-            <tbody>
-                {% for list in lists %}
-                <tr>
-                  <td><a href="{{ url_for('list.show', list_id=list.id) }}">{{ list.name }}</a></td>
-                  <td>
-                    <a href="{{ url_for('list.edit', list_id=list.id) }}">
-                      <i class="fa-regular fa-pen-to-square"></i>
-                    </a>
-                    <a href="{{ url_for('list.delete', list_id=list.id) }}">
-                      <i class="fa-regular fa-trash-can"></i>
-                    </a>
-                  </td>
-                </tr>
-                {% endfor %}
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="columns is-desktop">
+        {% for list in lists %}
+          <div class="column is-two-fifths">
+            <div class="card has-background-light">
+              <div class="card-header">
+                <a href="{{ url_for('list.show', list_id=list.id) }}" class="card-header-title">{{ list.name }}</a>
+                <button class="card-header-icon" aria-label="more options">
+                  <span class="icon">
+                    <i class="fa-solid fa-hand-pointer"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  {{ list.description }}
+                </div>
+              </div>
+              <footer class="card-footer">
+                <a href="{{ url_for('list.edit', list_id=list.id) }}" class="card-footer-item">
+                  <p>Edit</p>
+                  <span class="icon">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                  </span>
+                </a>
+                <a href="{{ url_for('list.delete', list_id=list.id) }}" class="card-footer-item">
+                  <p>Delete</p>
+                  <span class="icon">
+                    <i class="fa-regular fa-trash-can"></i>
+                  </span>
+                </a>
+              </footer>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
     </section>
 {% endblock %}

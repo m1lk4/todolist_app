@@ -3,6 +3,9 @@ from flask import render_template, redirect, url_for
 from flask import request
 from flask import flash
 
+import pandas as pd
+
+from src.database.todolist import db
 from src.core import board
 from src import auth
 
@@ -43,7 +46,8 @@ def edit(list_id):
 @list_blueprint.post("/<int:list_id>/edit")
 def update(list_id):
     name = request.form["name"]
-    board.update_list(list_id, name)
+    description = request.form["description"]
+    board.update_list(list_id, name, description)
     flash("List edited", "success")
 
     return redirect(url_for("list.index"))
@@ -67,3 +71,27 @@ def show(list_id):
     tasks = board.list_tasks(list_id=list_id)
 
     return render_template("lists/show.html", list=list, tasks=tasks)
+
+
+@list_blueprint.get("/upload_file")
+def new_file():
+
+    return render_template("lists/upload.html")
+
+
+@list_blueprint.post("/upload_file")
+def upload():
+    if "file" not in request.files:
+        return flash("No file selected", "danger")
+
+    file = request.files["file"]
+
+    if file.filename == "":
+        return flash("No file selected", "danger")
+
+    if file:
+        df = pd.read_csv(file)
+        df.to_sql("lists", db.engine, if_exists="append", index=False)
+        flash("Data has been successfully loaded into the database", "success")
+
+        return redirect(url_for("list.index"))

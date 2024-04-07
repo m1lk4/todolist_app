@@ -14,9 +14,10 @@ def create_list(**kwargs):
     db.session.commit()
 
 
-def update_list(id, name):
+def update_list(id, name, description):
     list = List.query.get(id)
     list.name = name
+    list.description = description
     db.session.commit()
 
 
