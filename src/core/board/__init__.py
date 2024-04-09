@@ -65,9 +65,7 @@ def list_user_fullname(user_fullname=None):
         list_fullname.append(fullname)
         if fullname == user_fullname:
             userid = row.id
-            print(userid)
             return userid
-    print(list_fullname)
 
     return list_fullname
 

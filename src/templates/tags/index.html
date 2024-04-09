@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<section class="section">
+  <nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="{{ url_for('list.index') }}">Lists</a></li>
+      <li class="is-active"><a href="#" aria-current="page">Tags</a></li>
+    </ul>
+  </nav>
+  <div class="level">
+    <div class="level-left">
+        <p class="title">
+          Tags
+        </p> 
+    </div>
+  </div>
+  {% for tag in tags %}
+  <span class="tag is-success">{{tag}}</span>
+  {% endfor %}
+  <a href="{{ url_for('tag.new') }}">
+    <span class="icon">
+      <i class="fa-solid fa-plus"></i>
+    </span>
+  </a>
+</section>
+{% endblock %}
