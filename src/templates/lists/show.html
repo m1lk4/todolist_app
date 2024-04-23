@@ -50,20 +50,20 @@
             <tr>
               {% if task.status=="Done" %}
                 <td><i class="fa-solid fa-circle-check"></i></td>
-                <td><strike>{{ task.name }}</strike></td>
+                <td><a href="{{ url_for('task.show', list_id=list.id, task_id=task.id) }}"><strike>{{ task.name }}</strike></a></td>
                 <td><strike>tags</strike></td>
                 <td><strike>{{ task.status }}</strike></td>
                 <td><strike>{{ task.priority }}</strike></td>
                 <td><strike>{{ task.due_date }}</strike></td>
                 <td><strike>{{ task.user_id }}</strike></td>
               {% else %}
-              <td><i class="fa-regular fa-circle"></i></td>
-              <td>{{ task.name }}</td>
-              <td>tags</td>
-              <td>{{ task.status }}</td>
-              <td>{{ task.priority }}</td>
-              <td>{{ task.due_date }}</td>
-              <td>{{ task.user_id }}</td>
+                <td><i class="fa-regular fa-circle"></i></td>
+                <td><a href="{{ url_for('task.show', list_id=list.id, task_id=task.id) }}">{{ task.name }}</a></td>
+                <td>tags</td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.priority }}</td>
+                <td>{{ task.due_date }}</td>
+                <td>{{ task.user_id }}</td>
               {% endif %}
               <td>
                 <a href="{{ url_for('task.edit', list_id=list.id, task_id=task.id) }}">

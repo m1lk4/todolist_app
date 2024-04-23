@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<section class="section">
+  <nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="{{ url_for('list.index') }}">Lists</a></li>
+      <li><a href="{{ url_for('list.show', list_id=list.id) }}">{{list.name}}</a></li>
+      <li class="is-active"><a href="#" aria-current="page">Task{{task.id}}</a></li>
+    </ul>
+  </nav>
+  <div class="card">
+    <header class="card-header">
+      <div class="card-header-title">{{task.name}}</div>
+    </header>
+    <div class="card-content">
+      <div class="content">
+        <p><strong>Status:</strong><span style="margin-left: 5px;">{{task.status}}</span></p>
+        <p><strong>Priority:</strong><span style="margin-left: 5px;">{{task.priority}}</span></p>
+        <p><strong>Due date:</strong><span style="margin-left: 5px;">{{task.due_date}}</span></p>
+        <p><strong>Assigned to:</strong><span style="margin-left: 5px;">{{task.user_id}}</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
