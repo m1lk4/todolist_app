@@ -1,3 +1,4 @@
+// Adding interactive buttom funtionality for closing notification elements
 document.addEventListener('DOMContentLoaded', () => {
     (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
       const $notification = $delete.parentNode;
