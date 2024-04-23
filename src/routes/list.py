@@ -7,7 +7,7 @@ import pandas as pd
 
 from src.database.todolist import db
 from src.core import board
-from src import auth
+from src.core import auth
 
 list_blueprint = Blueprint("list", __name__, url_prefix="/lists")
 

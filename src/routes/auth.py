@@ -4,7 +4,7 @@ from flask import request, redirect
 from flask import flash
 from flask import session
 
-from src import auth
+from src.core import auth
 
 auth_blueprint = Blueprint("auth", __name__)
 

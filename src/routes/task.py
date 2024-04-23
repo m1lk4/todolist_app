@@ -6,7 +6,7 @@ from flask import flash
 
 from datetime import datetime
 from src.core import board
-from src import auth
+from src.core import auth
 
 task_blueprint = Blueprint("task", __name__, url_prefix="/lists/<int:list_id>/tasks")
 
@@ -78,3 +78,12 @@ def delete(list_id, task_id):
     flash("Task deleted", "success")
 
     return redirect(url_for("list.show", list_id=list_id))
+
+
+@task_blueprint.get("/show/<int:task_id>")
+@auth.login_required
+def show(list_id, task_id):
+    task = board.get_task(task_id)
+    list = board.get_list(list_id)
+
+    return render_template("/tasks/show.html", task=task, list=list)
