@@ -5,7 +5,7 @@ from os import environ
 class Config(object):
     DEBUG = False
     TESTING = False
-    SECRET_KEY = b'_5#y2L"F4Q8z\n\xec]/1'
+    SECRET_KEY = environ.get("SECRET_KEY")
     SESSION_COOKIE_SECURE = True
 
 
@@ -17,14 +17,14 @@ class ProductionConfig(Config):
     DB_NAME = environ.get("DB_NAME")
     SESSION_TYPE = "filesystem"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = "postgresql://postgres@localhost:15432/todolist"
+    SQLALCHEMY_DATABASE_URI = environ.get("SQLALCHEMY_DATABASE_URI")
 
 
 # Development configuration
 class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SQLALCHEMY_DATABASE_URI = "postgresql://postgres@localhost:15432/todolist"
+    SQLALCHEMY_DATABASE_URI = environ.get("SQLALCHEMY_DATABASE_URI")
     SESSION_TYPE = "filesystem"
     SESSION_COOKIE_SECURE = False
 
